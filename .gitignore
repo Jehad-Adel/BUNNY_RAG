@@ -1,0 +1,141 @@
+# ========================================
+# SECURITY CRITICAL - NEVER COMMIT THESE
+# ========================================
+.env
+.env.*
+*.key
+*.pem
+*.crt
+*.p12
+*.pfx
+secrets.yaml
+config/secrets.json
+
+# ========================================
+# PYTHON - Bytecode & Cache
+# ========================================
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# ========================================
+# PYTHON - Virtual Environments
+# ========================================
+.venv/
+venv/
+ENV/
+env/
+.conda/
+.envrc
+
+# ========================================
+# PYTHON - Distribution & Builds
+# ========================================
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+pyproject.toml
+
+# ========================================
+# PYTHON - Testing & Coverage
+# ========================================
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+.pytest_cache/
+cover/
+htmlcov/
+
+# ========================================
+# APPLICATION - Logs & Runtime
+# ========================================
+*.log
+logs/
+*.pid
+*.seed
+*.pid.lock
+node_modules/
+
+# ========================================
+# APPLICATION - Database
+# ========================================
+*.db
+*.sqlite3
+*.sqlite
+*.sql
+*.sql.gz
+migrations/backup/
+
+# ========================================
+# IDE - Editors
+# ========================================
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.project
+.pydevproject
+.settings/
+
+# ========================================
+# OS - System Files
+# ========================================
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+*.lnk
+
+# ========================================
+# DOCKER (if used)
+# ========================================
+.dockerignore
+Dockerfile.*.local
+
+# ========================================
+# CELERY (if used)
+# ========================================
+celerybeat-schedule
+celerybeat.pid
+
+# ========================================
+# JUPYTER/NOTEBOOKS
+# ========================================
+.ipynb_checkpoints
+
+# ========================================
+# KEEP THESE EXAMPLES
+# ========================================
+!.env.example
+!.env.sample
+!.env.local.example
+
+# ========================================
+# KEEP CI/CD
+# ========================================
+!.github/
+!.github/workflows/

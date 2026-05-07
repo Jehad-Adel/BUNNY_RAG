@@ -1,0 +1,45 @@
+services:
+  db:
+    image: postgres:16
+    container_name: bunny_db
+    environment:
+      POSTGRES_DB: bunny
+      POSTGRES_USER: danserbanoiu
+      POSTGRES_PASSWORD: "Audit_Logger_2024!"
+    ports:
+      - "5432:5432"
+    volumes:
+      - db_data:/var/lib/postgresql/data
+      - ./db/init:/docker-entrypoint-initdb.d
+      - ./db/dump:/dump:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U danserbanoiu -d bunny"]
+      interval: 5s
+      timeout: 5s
+      retries: 30
+
+  app:
+    build: ./app
+    container_name: bunny_app
+    ports:
+      - "8000:8000"
+    depends_on:
+      db:
+        condition: service_healthy
+    env_file:
+      - .env
+    environment:
+      MAX_ROWS: "200"
+    command: ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
+    healthcheck:
+      test:
+        [
+          "CMD-SHELL",
+          "python -c \"import urllib.request; urllib.request.urlopen('http://localhost:8000/health').read()\"",
+        ]
+      interval: 10s
+      timeout: 5s
+      retries: 30
+
+volumes:
+  db_data:
